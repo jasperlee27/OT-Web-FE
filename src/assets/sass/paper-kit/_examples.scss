@@ -184,7 +184,7 @@
     font-size: 8em;
     font-weight: 700;
     margin: 0;
-    color: #FFFFFF;
+    color: #f3ab2e;
     // background: #fbf8ec;
     background: -moz-linear-gradient(to bottom, #FFFFFF 35%, #4e6773 100%);
     background: -webkit-linear-gradient(to bottom, #FFFFFF 35%,#4e6773 100%);
@@ -255,11 +255,11 @@
     left: 0;
     width: 250.625em;
     height: 43.75em;
-    -webkit-animation: cloudLoop 80s linear infinite;
-    animation: cloudLoop 80s linear infinite;
+    -webkit-animation: cloudFlow 80s linear infinite;
+    animation: cloudFlow 80s linear infinite;
 }
 
-@keyframes cloudLoop{   0%{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
+@keyframes cloudFlow{   0%{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
                         100%{-webkit-transform:translate3d(-50%,0,0);
                         transform:translate3d(-50%,0,0)}
                     }

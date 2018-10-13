@@ -13,8 +13,8 @@
     background-color: $bg-nude;
 }
 .section-gold{
-    background-color: #caac90;
-    color: $white-color;
+    background-color: #f3ab2e;
+    color: black;
 }
 .section-brown{
     background-color: #A59E94;
@@ -32,7 +32,6 @@
     background-color: #0b1011;
 }
 .section-image,
-.section-gold,
 .section-dark{
     position: relative;
 
@@ -46,6 +45,27 @@
     .card-plain .card-description,
     .card-plain .card-category{
         color: rgba($white-color, .7);
+    }
+    hr{
+        border-color: rgba(255, 255, 255, 0.19);
+    }
+}
+
+.section-gold {
+    position: relative;
+
+    .title,
+    .info-title,
+    .card-plain .card-title{
+        color: black !important;
+        font-weight:500;
+        font-size:40px;
+    }
+    .category,
+    .description,
+    .card-plain .card-description,
+    .card-plain .card-category{
+        color: black;
     }
     hr{
         border-color: rgba(255, 255, 255, 0.19);

@@ -1,0 +1,18 @@
+::placeholder {
+    color: #f3ab2e;
+    opacity: 1;
+}
+
+.btn-register, .btn-view-page{
+    background-color: #0b1011;
+    color: #f3ab2e;
+}
+
+.btn-register:hover, .btn-view-page:hover{
+    background-color: #f3ab2e;
+    color: #0b1011;
+}
+
+.btn-view-page{
+    border:none !important;
+}

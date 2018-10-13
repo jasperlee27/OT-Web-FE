@@ -17,7 +17,7 @@
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, a, .td-name, td, button, input, select, textarea {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: "Montserrat", "Helvetica", Arial, sans-serif;
+  font-family: "Open Sans","Montserrat", "Helvetica", Arial, sans-serif;
   font-weight: 300;
 }
 
@@ -78,7 +78,7 @@ h1 small, h2 small, h3 small, h1 .small, h2 .small, h3 .small {
 .footer-big h5,
 .footer-big h4,
 .media .media-heading {
-  font-family: "Montserrat", "Helvetica", Arial, sans-serif;
+  font-family: "Open Sans", "Montserrat", "Helvetica", Arial, sans-serif;
 }
 .title,
 .title a,
@@ -196,7 +196,7 @@ body {
   color: #66615b;
   font-size: 14px;
   font-weight: 300;
-  font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
+  font-family: "Open Sans",'Montserrat', "Helvetica", Arial, sans-serif;
 }
 
 a {
@@ -2646,9 +2646,9 @@ textarea.form-control {
 }
 
 .card-register {
-  background-color: #FF8F5E;
+  background-color: #f3ab2e;
   border-radius: 8px;
-  color: #fff;
+  color: #0b1011;
   max-width: 350px;
   margin: 120px 0 70px;
   min-height: 400px;
@@ -2668,7 +2668,7 @@ textarea.form-control {
 }
 
 .card-register .title {
-  color: #B33C12;
+  color: #0b1011;
   text-align: center;
 }
 
@@ -4354,7 +4354,7 @@ textarea.form-control {
   }
 
   .title-brand {
-    max-width: 450px;
+    max-width: 600px;
   }
   .title-brand .type {
     font-size: 16px;
@@ -5913,7 +5913,7 @@ textarea.form-control {
   margin: 0 auto;
   position: relative;
   text-align: center;
-  color: #FFFFFF;
+  color: #f3ab2e;
   display: block;
 }
 .title-brand .type {
@@ -5932,7 +5932,7 @@ textarea.form-control {
   font-size: 8em;
   font-weight: 700;
   margin: 0;
-  color: #FFFFFF;
+  color: #f3ab2e;
   background: #fbf8ec;
   background: -moz-linear-gradient(top, #FFFFFF 35%, #4e6773 100%);
   background: -webkit-linear-gradient(top, #FFFFFF 35%, #4e6773 100%);
@@ -5990,11 +5990,11 @@ textarea.form-control {
   left: 0;
   width: 250.625em;
   height: 43.75em;
-  -webkit-animation: cloudLoop 80s linear infinite;
-  animation: cloudLoop 80s linear infinite;
+  -webkit-animation: cloudFlow 80s linear infinite;
+  animation: cloudFlow 80s linear infinite;
 }
 
-@keyframes cloudLoop {
+@keyframes cloudFlow {
   0% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
