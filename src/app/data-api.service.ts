@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from '../../node_modules/rxjs/Observable';
 
 const loginUrl = 'http://178.128.50.224:3000/login/';
-
+const registrationURL = 'http://178.128.50.224:3000/account/create';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +16,19 @@ export class DataApiService {
     var data = this.http.get('http://178.128.50.224:3000/accounts');
     console.log("Data from server service " + data);
     return data;
+  }
+
+  postRegistration(username, password, email, country, referral): Observable<any> {
+    const httpHeader = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
+    };
+    var requestBody = new HttpParams()
+    .set("username", username)
+    .set("password", password)
+    .set("email", email)
+    .set("country", country)
+    .set("referral", referral);
+    return this.http.post(registrationURL, requestBody, httpHeader);
   }
 
   postLogin(username, password): Observable<any> {

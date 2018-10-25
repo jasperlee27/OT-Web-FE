@@ -301,21 +301,31 @@ export class SignupComponent implements OnInit {
         var data = this.dataApiService.getServerHealth();
         console.log(data);
     }
+
     onSubmit(myForm) {
-
+        //check if form valid
         if (myForm.valid) {
-
+            //check if passwords mismatch
             if (myForm.value.password !== myForm.value.password2) {
                 console.log("Passwords do not match, not sending request");
             }
+            //passwords match
             else {
                 console.log("Valid form, sending request");
+                this.dataApiService.postRegistration(myForm.value.username, myForm.value.password, myForm.value.email, myForm.value.countrySel, myForm.value.referralCode).subscribe(data => {
+                    console.log("Login reponse " + data);
+                },
+                    err => {
+                        console.log("Error: " + err.error.message);
+                    });
+                console.log("login function completed");
             }
         }
-
+        //params not filled up
         else {
             console.log("form invalid, not sending request");
         }
+
         console.log(JSON.stringify(myForm.value));
     }
 
@@ -345,13 +355,12 @@ export class SignupComponent implements OnInit {
         var url = window.URL.createObjectURL(blob);
         window.open(url);
     }
-    handleCorrectCaptcha($event){
+    handleCorrectCaptcha($event) {
         let token = this.captcha.getResponse();
         // this.captcha.reset();
         console.log(token);
-        if (token !== null)
-        {
-            this.captchaSuccess=true;
+        if (token !== null) {
+            this.captchaSuccess = true;
         }
     }
 }
