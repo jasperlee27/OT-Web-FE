@@ -68,7 +68,11 @@
                                 </span>
                                 <input type="text" class="form-control" ngModel #referralCode name="referralCode" placeholder="Referral Code">
                             </div>
-                            <button type="submit" [disabled]="!myForm.valid" class="btn btn-register btn-block btn-round">Register</button>
+                            <div class="input-group form-group-no-border">
+                                <re-captcha *ngIf="myForm.valid" (captchaResponse)="handleCorrectCaptcha($event)" theme="dark" site_key="6LcwznYUAAAAAEeGEvBbZVhUQN2pXl_tzL0ql_1y" [theme]="dark"
+                                    required></re-captcha>
+                            </div>
+                            <button type="submit" [disabled]="!captchaSuccess" class="btn btn-register btn-block btn-round">Register</button>
                         </form>
                         <!-- <p>Form value: {{myForm.valid}}</p> -->
 

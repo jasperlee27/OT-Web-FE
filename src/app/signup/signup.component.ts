@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs/Observable';
+import { ViewChild } from '@angular/core';
+import { ReCaptchaComponent } from 'angular2-recaptcha';
 
 import { DataApiService } from '../data-api.service';
 import { saveAs } from '../../../node_modules/file-saver'
@@ -16,8 +18,9 @@ import { saveAs } from '../../../node_modules/file-saver'
 export class SignupComponent implements OnInit {
     test: Date = new Date();
     defaultValue;
-
+    @ViewChild(ReCaptchaComponent) captcha: ReCaptchaComponent;
     countryList: Array<any>;
+    captchaSuccess: boolean = false;
 
     constructor(private dataApiService: DataApiService, private http: HttpClient) {
         this.countryList = new Array();
@@ -341,6 +344,15 @@ export class SignupComponent implements OnInit {
         var blob = new Blob([data], { type: 'blob' });
         var url = window.URL.createObjectURL(blob);
         window.open(url);
+    }
+    handleCorrectCaptcha($event){
+        let token = this.captcha.getResponse();
+        // this.captcha.reset();
+        console.log(token);
+        if (token !== null)
+        {
+            this.captchaSuccess=true;
+        }
     }
 }
 
