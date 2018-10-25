@@ -5,7 +5,8 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12 ml-auto mr-auto">
                     <div class="card card-register">
-                        <span style="text-align:center; font-size:24px; font-weight:600; color:black">SIGN UP</span><br>
+                        <span style="text-align:center; font-size:24px; font-weight:600; color:black">SIGN UP</span>
+                        <br>
                         <div class="social-line text-center">
                             <a href="https://www.facebook.com" class="btn btn-neutral btn-facebook btn-just-icon">
                                 <i class="fa fa-facebook-square"></i>
@@ -17,28 +18,66 @@
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </div>
-                        <form class="register-form">
-                            <i class="nc-icon nc-email-85"></i>&nbsp;&nbsp;<span style="font-size:16px; font-weight:500">Email</span>
-                            <div class="input-group form-group-no-border">
-                                <span class="input-group-addon">
-                                </span>
-                                <input type="text" class="form-control" placeholder="Email">
+                        <form class="register-form" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+                            <!-- Country -->
+                            <div class="form-group-no-border">
+                                <i class="nc-icon nc-globe"></i>&nbsp;&nbsp;
+                                <span style="font-size:16px; font-weight:500">Country</span>
+                                <select class="form-control" ngModel #countrySel name="countrySel" (change)="onChange($event.target.value)" required>
+                                    <option *ngFor="let x of countryList" [value]="x.id">{{x.name}}</option>
+                                </select>
                             </div>
 
-                            <i class="nc-icon nc-key-25"></i>&nbsp;&nbsp;<span style="font-size:16px; font-weight:500">Password</span>
+                            <!-- E mail-->
+                            <i class="nc-icon nc-email-85"></i>&nbsp;&nbsp;
+                            <span style="font-size:16px; font-weight:500">Email</span>
                             <div class="input-group form-group-no-border">
                                 <span class="input-group-addon">
                                 </span>
-                                <input type="text" class="form-control" placeholder="Password">
+                                <input type="text" class="form-control" ngModel #email name="email" placeholder="Email" required>
                             </div>
-                            <button class="btn btn-register btn-block btn-round" (click)="login()">Register</button>
+                            <!-- Username -->
+                            <i class="nc-icon nc-circle-10"></i>&nbsp;&nbsp;
+                            <span style="font-size:16px; font-weight:500">Username</span>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                </span>
+                                <input type="text" class="form-control" ngModel #username name="username" placeholder="Username" required>
+                            </div>
+                            <!-- Password -->
+                            <i class="nc-icon nc-key-25"></i>&nbsp;&nbsp;
+                            <span style="font-size:16px; font-weight:500">Password</span>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                </span>
+                                <input type="password" class="form-control" ngModel #password name="password" placeholder="Password" required>
+                            </div>
+                            <!-- Confirm Password -->
+                            <i class="nc-icon nc-key-25"></i>&nbsp;&nbsp;
+                            <span style="font-size:16px; font-weight:500">Confirm Password</span>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                </span>
+                                <input type="password" class="form-control" ngModel #password2 name="password2" placeholder="Confirm Password" required>
+                            </div>
+                            <!-- Password -->
+                            <i class="nc-icon nc-spaceship"></i>&nbsp;&nbsp;
+                            <span style="font-size:16px; font-weight:500">Referral</span>
+                            <div class="input-group form-group-no-border">
+                                <span class="input-group-addon">
+                                </span>
+                                <input type="text" class="form-control" ngModel #referralCode name="referralCode" placeholder="Referral Code">
+                            </div>
+                            <button type="submit" [disabled]="!myForm.valid" class="btn btn-register btn-block btn-round">Register</button>
                         </form>
+                        <!-- <p>Form value: {{myForm.valid}}</p> -->
+
                         <a href="http://178.128.50.224:3000/downloadapp" class="btn btn-register btn-block btn-round">Download</a>
                         <div class="forgot">
                             <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
                         </div>
                     </div>
-          
+
                 </div>
             </div>
         </div>

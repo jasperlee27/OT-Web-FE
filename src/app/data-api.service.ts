@@ -14,7 +14,7 @@ export class DataApiService {
 
   getServerHealth(): Observable<any> {
     var data = this.http.get('http://178.128.50.224:3000/accounts');
-    console.log("Data from server service " + data.subscribe()[0].admin);
+    console.log("Data from server service " + data);
     return data;
   }
 
