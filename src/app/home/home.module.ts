@@ -6,8 +6,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
+import { AccordionModule } from 'primeng/accordion';
+import { MenuItem } from 'primeng/api';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { PanelModule } from 'primeng/panel';
 
+import { ToastModule } from 'primeng/toast';
 import { ComponentsModule } from '../components/components.module';
+
+import {Component} from '@angular/core';
+import {MessageService} from 'primeng/api';
 
 @NgModule({
     imports: [
@@ -15,10 +23,11 @@ import { ComponentsModule } from '../components/components.module';
         BrowserModule,
         FormsModule,
         RouterModule,
-        ComponentsModule
+        AccordionModule,
+        ToastModule
     ],
-    declarations: [ HomeComponent ],
-    exports:[ HomeComponent ],
-    providers: []
+    declarations: [HomeComponent],
+    exports: [HomeComponent],
+    providers: [MessageService]
 })
 export class HomeModule { }

@@ -7,6 +7,7 @@ import { ReCaptchaComponent } from 'angular2-recaptcha';
 
 import { DataApiService } from '../data-api.service';
 import { saveAs } from '../../../node_modules/file-saver'
+import { MessageService } from '../../../node_modules/primeng/api';
 
 @Component({
     selector: 'app-signup',
@@ -22,7 +23,7 @@ export class SignupComponent implements OnInit {
     countryList: Array<any>;
     captchaSuccess: boolean = false;
 
-    constructor(private dataApiService: DataApiService, private http: HttpClient) {
+    constructor(private dataApiService: DataApiService, private http: HttpClient, private messageService: MessageService) {
         this.countryList = new Array();
     }
 
@@ -313,12 +314,14 @@ export class SignupComponent implements OnInit {
             else {
                 console.log("Valid form, sending request");
                 this.dataApiService.postRegistration(myForm.value.username, myForm.value.password, myForm.value.email, myForm.value.countrySel, myForm.value.referralCode).subscribe(data => {
-                    console.log("Login reponse " + data);
+                    console.log("Response from creating account " + data);
+                    this.addSingle();
+                    myForm.reset();
                 },
                     err => {
                         console.log("Error: " + err.error.message);
                     });
-                console.log("login function completed");
+                console.log("Create Acc Success");
             }
         }
         //params not filled up
@@ -341,6 +344,20 @@ export class SignupComponent implements OnInit {
         this.dataApiService.getDownload().subscribe(data => this.downloadFile(data)),//console.log(data),
             error => console.log("Error downloading the file."),
             () => console.info("OK");
+    }
+
+
+    addSingle() {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Your account has been created' });
+    }
+
+    addMultiple() {
+        this.messageService.addAll([{ severity: 'success', summary: 'Service Message', detail: 'Via MessageService' },
+        { severity: 'info', summary: 'Info Message', detail: 'Via MessageService' }]);
+    }
+
+    clear() {
+        this.messageService.clear();
     }
 
     onChange(countryValue) {

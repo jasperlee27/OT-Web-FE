@@ -12,6 +12,7 @@ import { MenuItem } from 'primeng/api';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { PanelModule } from 'primeng/panel';
 import { ChartModule, CalendarModule, SharedModule } from 'primeng/primeng';
+import { ToastModule } from 'primeng/toast';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
@@ -48,7 +49,8 @@ import { ReCaptchaModule } from 'angular2-recaptcha';
     ReCaptchaModule,
     AccordionModule,
     PanelModule,
-    PanelMenuModule
+    PanelMenuModule,
+    ToastModule
   ],
   providers: [
     DataApiService

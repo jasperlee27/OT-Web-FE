@@ -183,7 +183,7 @@
                             </div>
 
                         </div>
-                        <!-- <p-accordion>
+                        <p-accordion>
                             <p-accordionTab header="Header 1">
                                 Content 1
                             </p-accordionTab>
@@ -193,7 +193,7 @@
                             <p-accordionTab header="Header 3">
                                 Content 3
                             </p-accordionTab>
-                        </p-accordion> -->
+                        </p-accordion>
                     </div>
                 </div>
             </div>
@@ -234,11 +234,12 @@
                                 </div>
                                 <button class="btn btn-register btn-block btn-round">Verify</button>
                             </form>
+                            <p-toast position="bottom-right"></p-toast>
                             <div class="forgot">
                                 <a href="mailto:contact@ortustenoris.io?subject=Forgot%20Password%20[UserID]" class="btn btn-link btn-danger">Forgot password?</a>
                             </div>
                         </div>
-                        <div class="col text-center">
+                        <div class="btn col text-center" (click)="testToast()">
                             <span style="color: #f5593d; font-weight:700; font-size:12px;">NOT YET REGISTERED?</span>
                         </div>
                         <div class="col text-center" routerLinkActive="active">
