@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AccordionModule } from 'primeng/accordion';
+import { MenuItem } from 'primeng/api';
 
 @Component({
     selector: 'app-home',
@@ -14,5 +16,9 @@ export class HomeComponent implements OnInit {
     };
     constructor() { }
 
-    ngOnInit() {}
+    ngOnInit() { }
+
+    forgotPassword(){
+        console.log("Forgot password");
+    }
 }

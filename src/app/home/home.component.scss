@@ -17,5 +17,23 @@
     border:none !important;
 }
 
+.panel-heading {
+    background-color:#222;
+    color: #f3ab2e;
+    height:36px;
+}
+
+.panel-body{
+    background-color:#FFC256;
+    height:60px;
+}
+
+.panel{
+    // border-color:black;
+    border:0;
+    margin:16px;
+    border-radius: 8px;
+}
+
 // ul.attraction-list {height:400px; width:100%;}
 // ul.attraction-list{overflow:hidden; overflow-y:scroll;}
