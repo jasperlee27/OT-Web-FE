@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
     captchaSuccess: boolean = false;
     id: number;
     private sub: any;
-    referralCode; 
+    referralCode: String = ""; 
     constructor(private dataApiService: DataApiService, private http: HttpClient, private messageService: MessageService, private router: Router, private route: ActivatedRoute) {
         this.countryList = new Array();
     }
@@ -34,7 +34,9 @@ export class SignupComponent implements OnInit {
         this.sub = this.route.params.subscribe(params => {
             this.id = +params['id']; // (+) converts string 'id' to a number
             var toInput = +params['id'];
-            this.referralCode = this.id;
+            if (this.id){
+                this.referralCode = this.id.toString();
+            }
             // In a real app: dispatch action to load the details here.
         });
 

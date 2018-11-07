@@ -26,7 +26,7 @@ export class DataApiService {
     .set("password", password)
     .set("email", email)
     .set("country", country)
-    .set("referral", referral);
+    .set("referralId", referral);
     return this.http.post(registrationURL, requestBody, httpHeader);
   }
 
