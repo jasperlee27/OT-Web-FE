@@ -26,6 +26,7 @@ export class SignupComponent implements OnInit {
     id: number;
     private sub: any;
     referralCode: String = ""; 
+    isRefDisabled: boolean = false;
     constructor(private dataApiService: DataApiService, private http: HttpClient, private messageService: MessageService, private router: Router, private route: ActivatedRoute) {
         this.countryList = new Array();
     }
@@ -36,6 +37,7 @@ export class SignupComponent implements OnInit {
             var toInput = +params['id'];
             if (this.id){
                 this.referralCode = this.id.toString();
+                this.isRefDisabled = true;
             }
             // In a real app: dispatch action to load the details here.
         });
