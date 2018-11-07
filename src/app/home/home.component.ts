@@ -3,6 +3,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { MenuItem } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { DataApiService } from '../data-api.service';
+import { Router, NavigationEnd } from '../../../node_modules/@angular/router';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -11,18 +12,44 @@ import { DataApiService } from '../data-api.service';
 
 export class HomeComponent implements OnInit {
     verified = false;
+    sectionScroll;
 
     model = {
         left: true,
         middle: false,
         right: false
     };
-    constructor(private messageService: MessageService, private dataApiService: DataApiService) { }
+    constructor(private messageService: MessageService, private dataApiService: DataApiService, private router: Router) { }
+    internalRoute(page, dst) {
+        this.sectionScroll = dst;
+        this.router.navigate([page], { fragment: dst });
+    }
 
     ngOnInit() {
         this.verified = false;
+        this.router.events.subscribe((evt) => {
+            if (!(evt instanceof NavigationEnd)) {
+                return;
+            }
+            this.doScroll();
+            this.sectionScroll = null;
+        });
     }
 
+    doScroll() {
+
+        if (!this.sectionScroll) {
+            return;
+        }
+        try {
+            var elements = document.getElementById(this.sectionScroll);
+
+            elements.scrollIntoView();
+        }
+        finally {
+            this.sectionScroll = null;
+        }
+    }
     forgotPassword() {
     }
 

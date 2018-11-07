@@ -8,6 +8,7 @@ import { ReCaptchaComponent } from 'angular2-recaptcha';
 import { DataApiService } from '../data-api.service';
 import { saveAs } from '../../../node_modules/file-saver'
 import { MessageService } from '../../../node_modules/primeng/api';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
     selector: 'app-signup',
@@ -23,7 +24,7 @@ export class SignupComponent implements OnInit {
     countryList: Array<any>;
     captchaSuccess: boolean = false;
 
-    constructor(private dataApiService: DataApiService, private http: HttpClient, private messageService: MessageService) {
+    constructor(private dataApiService: DataApiService, private http: HttpClient, private messageService: MessageService, private router: Router) {
         this.countryList = new Array();
     }
 
@@ -313,6 +314,10 @@ export class SignupComponent implements OnInit {
                 this.dataApiService.postRegistration(myForm.value.username, myForm.value.password, myForm.value.email, myForm.value.countrySel, myForm.value.referralCode).subscribe(data => {
                     this.addSingle();
                     myForm.reset();
+                    setTimeout(() => {
+                        this.router.navigate(['home' ]);
+                    },
+                        2000);
                 },
                     err => {
                         // console.log("Error: " + err.error.message);
@@ -342,7 +347,7 @@ export class SignupComponent implements OnInit {
 
 
     addSingle() {
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Your account has been created' });
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Your account has been created. Bringing you to home page to download' });
     }
 
     passwordMismatch() {
