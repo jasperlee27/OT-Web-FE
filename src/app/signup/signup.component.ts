@@ -280,14 +280,14 @@ export class SignupComponent implements OnInit {
 
     }
 
-    saveFile() {
-        const httpHeader = {
-            headers: new HttpHeaders({ 'Accept': 'text/plain' })
-        };
-        this.http.get('http://178.128.50.224:3000/downloadApp', httpHeader)
-            .toPromise()
-            .then(response => this.saveToFileSystem(response));
-    }
+    // saveFile() {
+    //     const httpHeader = {
+    //         headers: new HttpHeaders({ 'Accept': 'text/plain' })
+    //     };
+    //     this.http.get('http://178.128.50.224:3000/downloadApp', httpHeader)
+    //         .toPromise()
+    //         .then(response => this.saveToFileSystem(response));
+    // }
 
     private saveToFileSystem(response) {
         const contentDispositionHeader: string = response.headers.get('Content-Disposition');
@@ -298,9 +298,7 @@ export class SignupComponent implements OnInit {
     }
 
     registerAccount() {
-        console.log("clicked register");
         var data = this.dataApiService.getServerHealth();
-        console.log(data);
     }
 
     onSubmit(myForm) {
@@ -308,47 +306,51 @@ export class SignupComponent implements OnInit {
         if (myForm.valid) {
             //check if passwords mismatch
             if (myForm.value.password !== myForm.value.password2) {
-                console.log("Passwords do not match, not sending request");
+                this.passwordMismatch();
             }
             //passwords match
             else {
-                console.log("Valid form, sending request");
                 this.dataApiService.postRegistration(myForm.value.username, myForm.value.password, myForm.value.email, myForm.value.countrySel, myForm.value.referralCode).subscribe(data => {
-                    console.log("Response from creating account " + data);
                     this.addSingle();
                     myForm.reset();
                 },
                     err => {
-                        console.log("Error: " + err.error.message);
+                        // console.log("Error: " + err.error.message);
                     });
-                console.log("Create Acc Success");
             }
         }
         //params not filled up
         else {
-            console.log("form invalid, not sending request");
+            this.emptyFields();
         }
 
-        console.log(JSON.stringify(myForm.value));
     }
 
-    login() {
-        // this.dataApiService.getDownload().subscribe(data => {
-        //     console.log("Login reponse " + data);
-        // },
-        //     err => {
-        //         console.log(err);
-        //     });
-        // console.log("login function completed");
+    // login() {
+    //     // this.dataApiService.getDownload().subscribe(data => {
+    //     //     console.log("Login reponse " + data);
+    //     // },
+    //     //     err => {
+    //     //         console.log(err);
+    //     //     });
+    //     // console.log("login function completed");
 
-        this.dataApiService.getDownload().subscribe(data => this.downloadFile(data)),//console.log(data),
-            error => console.log("Error downloading the file."),
-            () => console.info("OK");
-    }
+    //     this.dataApiService.getDownload().subscribe(data => this.downloadFile(data)),//console.log(data),
+    //         error => console.log("Error downloading the file."),
+    //         () => console.info("OK");
+    // }
 
 
     addSingle() {
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Your account has been created' });
+    }
+
+    passwordMismatch() {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Passwords do not match' });
+    }
+
+    emptyFields() {
+        this.messageService.add({ severity: 'warning', summary: 'Warn', detail: 'Please fill up all required forms.' });
     }
 
     addMultiple() {
@@ -364,7 +366,7 @@ export class SignupComponent implements OnInit {
         if (countryValue === 'Breakline') {
             countryValue = 'CN';
         }
-        console.log(countryValue);
+        // console.log(countryValue);
     }
 
     downloadFile(data: Response) {
@@ -375,7 +377,6 @@ export class SignupComponent implements OnInit {
     handleCorrectCaptcha($event) {
         let token = this.captcha.getResponse();
         // this.captcha.reset();
-        console.log(token);
         if (token !== null) {
             this.captchaSuccess = true;
         }

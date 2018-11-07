@@ -21,8 +21,7 @@ export class NavbarComponent implements OnInit {
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const html = document.getElementsByTagName('html')[0];
-        // console.log(html);
-        // console.log(toggleButton, 'toggle');
+    
 
         setTimeout(function(){
             toggleButton.classList.add('toggled');
@@ -33,7 +32,6 @@ export class NavbarComponent implements OnInit {
     };
     sidebarClose() {
         const html = document.getElementsByTagName('html')[0];
-        // console.log(html);
         this.toggleButton.classList.remove('toggled');
         this.sidebarVisible = false;
         html.classList.remove('nav-open');

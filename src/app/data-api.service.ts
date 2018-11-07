@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from '../../node_modules/rxjs/Observable';
 
-const loginUrl = 'http://178.128.50.224:3000/login/';
+const verifyURL = 'http://178.128.50.224:3000/verifyApp/';
 const registrationURL = 'http://178.128.50.224:3000/account/create';
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,6 @@ export class DataApiService {
 
   getServerHealth(): Observable<any> {
     var data = this.http.get('http://178.128.50.224:3000/accounts');
-    console.log("Data from server service " + data);
     return data;
   }
 
@@ -31,12 +30,12 @@ export class DataApiService {
     return this.http.post(registrationURL, requestBody, httpHeader);
   }
 
-  postLogin(username, password): Observable<any> {
+  postVerify(username, password): Observable<any> {
     const httpHeader = {
       headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
     };
     var requestBody = new HttpParams().set("username", username).set("password", password);
-    return this.http.post(loginUrl, requestBody, httpHeader);
+    return this.http.post(verifyURL, requestBody, httpHeader);
   }
 
   postDownload(): Observable<any> {

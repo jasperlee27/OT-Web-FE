@@ -183,7 +183,7 @@
                             </div>
 
                         </div>
-                        <p-accordion>
+                        <!-- <p-accordion>
                             <p-accordionTab header="Header 1">
                                 Content 1
                             </p-accordionTab>
@@ -193,7 +193,7 @@
                             <p-accordionTab header="Header 3">
                                 Content 3
                             </p-accordionTab>
-                        </p-accordion>
+                        </p-accordion> -->
                     </div>
                 </div>
             </div>
@@ -216,13 +216,13 @@
                                     <i class="fa fa-twitter"></i>
                                 </a>
                             </div>
-                            <form class="login-form">
-                                <i class="nc-icon nc-email-85"></i>&nbsp;&nbsp;
-                                <span style="font-size:16px; font-weight:500">Email</span>
+                            <form *ngIf="!verified" class="login-form" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+                                <i class="nc-icon nc-circle-10"></i>&nbsp;&nbsp;
+                                <span style="font-size:16px; font-weight:500">Username</span>
                                 <div class="input-group form-group-no-border">
                                     <span class="input-group-addon">
                                     </span>
-                                    <input type="text" class="form-control" placeholder="Email">
+                                    <input type="text" class="form-control" ngModel #username name="username" placeholder="Username" required>
                                 </div>
 
                                 <i class="nc-icon nc-key-25"></i>&nbsp;&nbsp;
@@ -230,17 +230,15 @@
                                 <div class="input-group form-group-no-border">
                                     <span class="input-group-addon">
                                     </span>
-                                    <input type="text" class="form-control" placeholder="Password">
+                                    <input type="password" class="form-control" ngModel #password name="password" placeholder="Password" required>
                                 </div>
-                                <button class="btn btn-register btn-block btn-round">Verify</button>
+                                <button type="submit" class="btn btn-register btn-block btn-round">Verify</button>
                             </form>
+                            <a *ngIf="verified" href="http://178.128.50.224:3000/downloadapp" class="btn btn-register btn-block btn-round">Download APK</a>
                             <p-toast position="bottom-right"></p-toast>
                             <div class="forgot">
                                 <a href="mailto:contact@ortustenoris.io?subject=Forgot%20Password%20[UserID]" class="btn btn-link btn-danger">Forgot password?</a>
                             </div>
-                        </div>
-                        <div class="btn col text-center" (click)="testToast()">
-                            <span style="color: #f5593d; font-weight:700; font-size:12px;">NOT YET REGISTERED?</span>
                         </div>
                         <div class="col text-center" routerLinkActive="active">
                             <a [routerLink]="['/signup']" class="btn btn-view-page btn-clear btn-round btn-lg">View Register Page</a>
