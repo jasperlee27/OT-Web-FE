@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from '../../../node_modules/rxjs/Observable';
 import { ViewChild } from '@angular/core';
 import { ReCaptchaComponent } from 'angular2-recaptcha';
-
+import { ActivatedRoute } from '@angular/router';
 import { DataApiService } from '../data-api.service';
 import { saveAs } from '../../../node_modules/file-saver'
 import { MessageService } from '../../../node_modules/primeng/api';
@@ -23,12 +23,23 @@ export class SignupComponent implements OnInit {
     @ViewChild(ReCaptchaComponent) captcha: ReCaptchaComponent;
     countryList: Array<any>;
     captchaSuccess: boolean = false;
-
-    constructor(private dataApiService: DataApiService, private http: HttpClient, private messageService: MessageService, private router: Router) {
+    id: number;
+    private sub: any;
+    referralCode; 
+    constructor(private dataApiService: DataApiService, private http: HttpClient, private messageService: MessageService, private router: Router, private route: ActivatedRoute) {
         this.countryList = new Array();
     }
 
     ngOnInit() {
+        this.sub = this.route.params.subscribe(params => {
+            this.id = +params['id']; // (+) converts string 'id' to a number
+            var toInput = +params['id'];
+            this.referralCode = this.id;
+            // In a real app: dispatch action to load the details here.
+        });
+
+
+
         this.defaultValue = 'AF';
         this.countryList.push(new Country('CN', 'China'));
         // this.countryList.push(new Country('Breakline','---------'));
@@ -315,7 +326,7 @@ export class SignupComponent implements OnInit {
                     this.addSingle();
                     myForm.reset();
                     setTimeout(() => {
-                        this.router.navigate(['home' ]);
+                        this.router.navigate(['home']);
                     },
                         2000);
                 },
