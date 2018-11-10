@@ -319,6 +319,8 @@ export class SignupComponent implements OnInit {
 
     onSubmit(myForm) {
         //check if form valid
+        // console.log(JSON.stringify(myForm.value));
+        // console.log("MY referral code " + this.referralCode);
         if (myForm.valid) {
             //check if passwords mismatch
             if (myForm.value.password !== myForm.value.password2) {
@@ -326,7 +328,8 @@ export class SignupComponent implements OnInit {
             }
             //passwords match
             else {
-                this.dataApiService.postRegistration(myForm.value.username, myForm.value.password, myForm.value.email, myForm.value.countrySel, myForm.value.referralCode).subscribe(data => {
+                this.dataApiService.postRegistration(myForm.value.username, myForm.value.password, myForm.value.email, myForm.value.countrySel, this.referralCode).subscribe(data => {
+                    // console.log("MY referral code POSTED " + this.referralCode);
                     this.addSingle();
                     myForm.reset();
                     setTimeout(() => {
@@ -343,7 +346,7 @@ export class SignupComponent implements OnInit {
         else {
             this.emptyFields();
         }
-
+        
     }
 
     // login() {
