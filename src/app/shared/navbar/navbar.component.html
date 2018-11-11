@@ -2,30 +2,39 @@
     <div class="container">
         <div class="navbar-translate">
             <a class="navbar-brand" href="http://www.ortustenoris.io">Ortus Tenoris</a>
-            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+
+            <a class="navbar-brand" href="/signup" target="_blank"><i class="nc-icon nc-tap-01"></i> Register</a>
+
+            <!-- <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
-            </button>
+            </button> -->
+            <!-- <span *ngIf="sidebarVisible">
+                TestWords
+            </span> -->
         </div>
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Our Facebook" data-placement="bottom" href="https://www.facebook.com" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Our Facebook" data-placement="bottom" href="https://www.facebook.com"
+                        target="_blank">
                         <i class="fa fa-facebook-square"></i>
                         <p class="d-lg-none">Facebook</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Our Instagram" data-placement="bottom" href="https://www.instagram.com" target="_blank">
+                    <a class="nav-link" rel="tooltip" title="Our Instagram" data-placement="bottom" href="https://www.instagram.com"
+                        target="_blank">
                         <i class="fa fa-instagram"></i>
                         <p class="d-lg-none">Instagram</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="/signup" class="nav-link" target="_blank"><i class="nc-icon nc-tap-01"></i> Register</a>
-                </li>
-<!-- 
+                </li> -->
+                <!-- 
                 <li class="nav-item" *ngIf="!isHome()">
                     <a [routerLink]="['/home']" *ngIf="!isDocumentation()" class="nav-link"><i class="nc-icon nc-layout-11"></i>Components</a>
                     <a [routerLink]="['/home']" *ngIf="isDocumentation()" class="nav-link">Back to Kit</a>

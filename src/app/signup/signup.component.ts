@@ -392,11 +392,11 @@ export class SignupComponent implements OnInit {
         // console.log(countryValue);
     }
 
-    downloadFile(data: Response) {
-        var blob = new Blob([data], { type: 'blob' });
-        var url = window.URL.createObjectURL(blob);
-        window.open(url);
-    }
+    // downloadFile(data: Response) {
+    //     var blob = new Blob([data], { type: 'blob' });
+    //     var url = window.URL.createObjectURL(blob);
+    //     window.open(url);
+    // }
     handleCorrectCaptcha($event) {
         let token = this.captcha.getResponse();
         // this.captcha.reset();
