@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
     captchaSuccess: boolean = false;
     id: number;
     private sub: any;
-    referralCode: String = ""; 
+    referralCode: String = "";
     isRefDisabled: boolean = false;
     constructor(private dataApiService: DataApiService, private http: HttpClient, private messageService: MessageService, private router: Router, private route: ActivatedRoute) {
         this.countryList = new Array();
@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
         this.sub = this.route.params.subscribe(params => {
             this.id = +params['id']; // (+) converts string 'id' to a number
             var toInput = +params['id'];
-            if (this.id){
+            if (this.id) {
                 this.referralCode = this.id.toString();
                 this.isRefDisabled = true;
             }
@@ -328,8 +328,13 @@ export class SignupComponent implements OnInit {
             }
             //passwords match
             else {
+                if (this.referralCode === "") {
+                    this.referralCode = myForm.value.referralCode;
+
+                }
+
                 this.dataApiService.postRegistration(myForm.value.username, myForm.value.password, myForm.value.email, myForm.value.countrySel, this.referralCode).subscribe(data => {
-                    // console.log("MY referral code POSTED " + this.referralCode);
+
                     this.addSingle();
                     myForm.reset();
                     setTimeout(() => {
@@ -338,7 +343,8 @@ export class SignupComponent implements OnInit {
                         2000);
                 },
                     err => {
-                        // console.log("Error: " + err.error.message);
+                        this.showErrorMessage(err.error.message);
+                        console.log("Error: " + err.error.message);
                     });
             }
         }
@@ -346,7 +352,7 @@ export class SignupComponent implements OnInit {
         else {
             this.emptyFields();
         }
-        
+
     }
 
     // login() {
@@ -362,7 +368,9 @@ export class SignupComponent implements OnInit {
     //         error => console.log("Error downloading the file."),
     //         () => console.info("OK");
     // }
-
+    showErrorMessage(message) {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: message });
+    }
 
     addSingle() {
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Your account has been created. Bringing you to home page to download' });
